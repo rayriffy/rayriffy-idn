@@ -1,7 +1,8 @@
+import { Fragment } from 'react'
+
 import { NextPage } from 'next'
 import { AppProps } from 'next/app'
 
-import { Context } from '../context/storeon'
 import { HeadTitle } from '../core/components/headTitle'
 import { AppLayout } from '../app/components/layout'
 
@@ -11,12 +12,12 @@ const NextApp: NextPage<AppProps> = props => {
   const { Component, pageProps } = props
 
   return (
-    <Context>
+    <Fragment>
       <HeadTitle />
       <AppLayout>
         <Component {...pageProps} />
       </AppLayout>
-    </Context>
+    </Fragment>
   )
 }
 

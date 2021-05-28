@@ -1,9 +1,6 @@
-import { FunctionComponent, useMemo, useEffect } from 'react'
+import { FunctionComponent } from 'react'
 
 import Head from 'next/head'
-import { useRouter } from 'next/router'
-
-import { useStoreon } from '../../context/storeon'
 
 interface Props {
   title?: string
@@ -11,35 +8,23 @@ interface Props {
 }
 
 export const HeadTitle: FunctionComponent<Props> = props => {
-  const { title, description = 'Next Tailwind template', children } = props
-
-  const router = useRouter()
-  const { dispatch } = useStoreon('title')
-
-  const transformedTitle = useMemo(
-    () => (title ? `${title} · Next Tailwind UI` : 'Next Tailwind UI'),
-    [title]
-  )
-
-  useEffect(() => {
-    dispatch('title/set', title)
-  }, [title])
+  const { children } = props
 
   return (
     <Head>
-      <title key="head-title">{transformedTitle}</title>
-      <meta key="title" name="title" content={transformedTitle} />
-      <meta key="description" name="description" content={description} />
+      <title key="head-title">Internationalized domain name converter</title>
+      <meta key="title" name="title" content="Internationalized domain name converter" />
+      <meta key="description" name="description" content="IDN encoding, and decoding tools" />
 
       <meta key="og:type" property="og:type" content="website" />
-      <meta key="og:url" property="og:url" content={router.asPath} />
-      <meta key="og:title" property="og:title" content={transformedTitle} />
-      <meta key="og:description" property="og:description" content={description} />
+      <meta key="og:url" property="og:url" content="/" />
+      <meta key="og:title" property="og:title" content="Internationalized domain name converter" />
+      <meta key="og:description" property="og:description" content="IDN encoding, and decoding tools" />
 
       <meta key="twitter:card" property="twitter:card" content="summary_large_image" />
-      <meta key="twitter:url" property="twitter:url" content={router.asPath} />
-      <meta key="twitter:title" property="twitter:title" content={transformedTitle} />
-      <meta key="twitter:description" property="twitter:description" content={description} />
+      <meta key="twitter:url" property="twitter:url" content="/" />
+      <meta key="twitter:title" property="twitter:title" content="Internationalized domain name converter" />
+      <meta key="twitter:description" property="twitter:description" content="IDN encoding, and decoding tools" />
 
       <link
         key="link-font-inter"
